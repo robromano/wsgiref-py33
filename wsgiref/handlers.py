@@ -169,7 +169,7 @@ class BaseHandler:
             try:
                 if self.headers_sent:
                     # Re-raise original exception if headers sent
-                    raise exc_info[0], exc_info[1], exc_info[2]
+                    raise(exc_info[0], exc_info[1], exc_info[2])
             finally:
                 exc_info = None        # avoid dangling circular ref
         elif self.headers is not None:
@@ -335,7 +335,7 @@ class BaseHandler:
         just separates write and flush operations for greater efficiency
         when the underlying system actually has such a distinction.
         """
-        raise NotImplementedError
+        raise NotImplementedError()
 
     def _flush(self):
         """Override in subclass to force sending of recent '_write()' calls
@@ -343,19 +343,19 @@ class BaseHandler:
         It's okay if this method is a no-op (i.e., if '_write()' actually
         sends the data.
         """
-        raise NotImplementedError
+        raise NotImplementedError()
 
     def get_stdin(self):
         """Override in subclass to return suitable 'wsgi.input'"""
-        raise NotImplementedError
+        raise NotImplementedError()
 
     def get_stderr(self):
         """Override in subclass to return suitable 'wsgi.errors'"""
-        raise NotImplementedError
+        raise NotImplementedError()
 
     def add_cgi_vars(self):
         """Override in subclass to insert CGI variables in 'self.environ'"""
-        raise NotImplementedError
+        raise NotImplementedError()
 
 
 
